@@ -1,0 +1,30 @@
+﻿
+<fieldset>
+    <legend>Información de la Persona Fisica</legend>
+
+    <input type="hidden" name="personaFisica[id]" value="@Model.id" readonly/>
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="personaFisica[nombre]" value="@Model.nombre" placeholder="Nombre" required/>
+
+    <label for="apellidoPaterno">Apellido Paterno:</label>
+    <input type="text" id="apellidoPaterno" name="personaFisica[apellidoPaterno]" value="@Model.apellidoPaterno" placeholder="Apellido Paterno" required/>
+
+    <label for="apellidoMaterno">Apellido Materno:</label>
+    <input type="text" id="apellidoMaterno" name="personaFisica[apellidoMaterno]" value="@Model.apellidoMaterno" placeholder="Apellido Materno" required/>
+
+    <label for="rfc">RFC:</label>
+    <input type="text" id="rfc" name="personaFisica[rfc]" value="@Model.rfc" placeholder="RFC" required/>
+
+    @{
+        string fecha = Model.fechaNacimiento;
+        DateTime fecha_conversion = new DateTime();
+        fecha_conversion = DateTime.Parse(fecha);
+        string newFecha = fecha_conversion.Year + "-" + fecha_conversion.Month + "-" + fecha_conversion.Day;
+    }
+    <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNacimiento" name="personaFisica[fechaNacimiento]" value="@newFecha" required/>
+
+    <label for="usuarioAgrega">Usuario Agrega:</label>
+    <input type="number" id="usuarioAgrega" name="personaFisica[usuarioAgrega]" value="@Model.usuarioAgrega" required/>
+</fieldset>

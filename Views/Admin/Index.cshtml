@@ -1,0 +1,90 @@
+﻿@model IEnumerable<webappPrueba.Models.PersonasFisicasCompleto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <main class="container">
+        <h1>Administrador de Personas Fisicas</h1>
+        @{
+            string mensaje = "";
+            if (ViewData["resultado"] != null)
+            {
+                switch (ViewData["resultado"])
+                {
+                    case 1:
+                        mensaje = "Creado correctamente";
+                        <p>@mensaje</p>
+                        break;
+                    case 2:
+                        mensaje = "Actualizado correctamente";
+                        <p>@mensaje</p>
+                        break;
+                    case 3:
+                        mensaje = "Eliminado correctamente";
+                        <p>@mensaje</p>
+                        break;
+                    case 4:
+                        mensaje = ViewBag.Errores;
+                        <p>@mensaje</p>
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        <a href="/Admin/Crear">Nuevo Registro</a>
+        <h2>Personas Fisicas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Fecha de registro</th>
+                    <th>Fecha de actualización</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>RFC</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Usuario Agrega</th>
+                    <th>Activo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var PersonaFisica in ViewData["PersonasFisicas"] as IEnumerable<webappPrueba.Models.PersonasFisicasCompleto>)
+                {
+                    <tr>
+                        <td>@PersonaFisica.id</td>
+                        <td>@PersonaFisica.fechaRegistro</td>
+                        <td>@PersonaFisica.fechaActualizacion</td>
+                        <td>@PersonaFisica.nombre</td>
+                        <td>@PersonaFisica.apellidoPaterno</td>
+                        <td>@PersonaFisica.apellidoMaterno</td>
+                        <td>@PersonaFisica.rfc</td>
+                        <td>@PersonaFisica.fechaNacimiento</td>
+                        <td>@PersonaFisica.usuarioAgrega</td>
+                        <td>@PersonaFisica.activo</td>
+                        <td>
+                            <form method="POST" action="/Admin/Eliminar">
+                                <input type="hidden" name="id" value="@PersonaFisica.id" />
+                                <input type="submit" value="Eliminar" />
+                            </form>
+
+                            <a href="/Admin/Actualizar?id=@PersonaFisica.id">Actualizar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
