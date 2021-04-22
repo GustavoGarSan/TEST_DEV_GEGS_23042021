@@ -10,40 +10,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Prueba</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/estilos.css">
 </head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
-    <nav class="container">
-        <div class="row">
-            <div class="col-12">
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a href="/" class="nav-link">Inicio</a>
-                    </li>
-                    @{
-                        if (auth)
-                        {
-                            <li class="nav-item">
-                                <a href="/Admin" class="nav-link">Administrar</a>
-                                <a href="/Auth/Logout" class="nav-link">Cerrar Sesion</a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a href="/Auth/Login" class="nav-link">Iniciar Sesion</a>
-                            </li>
-                        }
-                    }
-                </ul>
-            </div>
-        </div>
+    <nav class="p-nav">
+        <a href="/" class="enlace">Inicio</a>
+        @{
+            if (auth)
+            {
+                <a href="/Admin" class="enlace">Administrar</a>
+                <a href="/Auth/Logout" class="enlace">Cerrar Sesion</a>
+            }
+            else
+            {
+                <a href="/Auth/Login" class="enlace">Iniciar Sesion</a>
+            }
+        }
     </nav>
 
     <div>

@@ -4,60 +4,66 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Crear</title>
-</head>
-<body>
-    <main class="container">
-        <h1>Crear Registro de la Persona Fisica</h1>
-
-        <div>
-            @if (!(ViewBag.Errores == null))
-            {
-                foreach (var error in ViewBag.Errores)
-                {
-                    @error
-                }
-            }
+<main class="container centrar">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Crear Registro de la Persona Fisica</h1>
         </div>
+        @if (!(ViewBag.Errores == null))
+        {
+            foreach (var error in ViewBag.Errores)
+            {
+                <div class="col-md-12 not-error">@error</div>
+            }
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/Admin" class="btn btn-success">Volver</a>
+        </div>
+    </div>
 
-        <a href="/Admin" class="btn-primary">Volver</a>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="formulario" method="POST">
+                <fieldset>
+                    <legend>Información de la Persona Fisica</legend>
 
-        <form class="formulario" method="POST">
-
-            <fieldset>
-                <legend>Información de la Persona Fisica</legend>
-
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="personaFisica[nombre]" value="@Model.nombre" placeholder="Nombre" required />
-
-                <label for="apellidoPaterno">Apellido Paterno:</label>
-                <input type="text" id="apellidoPaterno" name="personaFisica[apellidoPaterno]" value="@Model.apellidoPaterno" placeholder="Apellido Paterno" required />
-
-                <label for="apellidoMaterno">Apellido Materno:</label>
-                <input type="text" id="apellidoMaterno" name="personaFisica[apellidoMaterno]" value="@Model.apellidoMaterno" placeholder="Apellido Materno" required />
-
-                <label for="rfc">RFC:</label>
-                <input type="text" id="rfc" name="personaFisica[rfc]" value="@Model.rfc" placeholder="RFC" required />
-
-                @{
-                    string fecha = Model.fechaNacimiento;
-                    DateTime fecha_conversion = new DateTime();
-                    fecha_conversion = DateTime.Parse(fecha);
-                    string newFecha = fecha_conversion.Year + "-" + '0' +fecha_conversion.Month + "-" + fecha_conversion.Day;
-                }
-                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="personaFisica[fechaNacimiento]" value="@newFecha" required />
-
-                <label for="usuarioAgrega">Usuario Agrega:</label>
-                <input type="number" id="usuarioAgrega" name="personaFisica[usuarioAgrega]" value="@Model.usuarioAgrega" required />
-            </fieldset>
-            <input type="submit" value="Crear Persona Fisica" />
-        </form>
-    </main>
-</body>
-</html>
+                    <div class="form-group row">
+                        <div class="col-md-12 grupos">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="personaFisica[nombre]" value="@Model.nombre" placeholder="Nombre" required />
+                        </div>
+                        <div class="col-md-12 grupos">
+                            <label for="apellidoPaterno">Apellido Paterno:</label>
+                            <input type="text" id="apellidoPaterno" name="personaFisica[apellidoPaterno]" value="@Model.apellidoPaterno" placeholder="Apellido Paterno" required />
+                        </div>
+                        <div class="col-md-12 grupos">
+                            <label for="apellidoMaterno">Apellido Materno:</label>
+                            <input type="text" id="apellidoMaterno" name="personaFisica[apellidoMaterno]" value="@Model.apellidoMaterno" placeholder="Apellido Materno" required />
+                        </div>
+                        <div class="col-md-12 grupos">
+                            <label for="rfc">RFC:</label>
+                            <input type="text" id="rfc" name="personaFisica[rfc]" value="@Model.rfc" placeholder="RFC" required />
+                        </div>
+                        <div class="col-md-12 grupos">
+                            @{
+                                string fecha = Model.fechaNacimiento;
+                                DateTime fecha_conversion = new DateTime();
+                                fecha_conversion = DateTime.Parse(fecha);
+                                string newFecha = fecha_conversion.Year + "-" + '0' + fecha_conversion.Month + "-" + fecha_conversion.Day;
+                            }
+                            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                            <input type="date" id="fechaNacimiento" name="personaFisica[fechaNacimiento]" value="@newFecha" required />
+                        </div>
+                        <div class="col-md-12 grupos">
+                            <label for="usuarioAgrega">Usuario Agrega:</label>
+                            <input type="number" id="usuarioAgrega" name="personaFisica[usuarioAgrega]" value="@Model.usuarioAgrega" required />
+                        </div>
+                    </div>
+                </fieldset>
+                <input type="submit" class="btn btn-primary" value="Crear Persona Fisica" />
+            </form>
+        </div>
+    </div>
+</main>

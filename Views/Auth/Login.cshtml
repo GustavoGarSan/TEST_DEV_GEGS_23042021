@@ -3,39 +3,38 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <main>
-        <h1>Iniciar Sesión</h1>
-
-        <div>
-            @if (!(ViewBag.Errores == null))
-            {
-                foreach (var error in ViewBag.Errores)
-                {
-                    @error
-                }
-            }
+<main class="container centrar">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="centrar">Iniciar Sesión</h1>
         </div>
+        @if (!(ViewBag.Errores == null))
+        {
+            foreach (var error in ViewBag.Errores)
+            {
+                <div class="col-md-12 not-error">@error</div>
+            }
+        }
+    </div>
 
-        <form method="POST" class="formulario" action="/Auth/login">
-            <fieldset>
-                <legend>Email y Password</legend>
-
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Tú Email">
-
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Tú Password">
-            </fieldset>
-            <input type="submit" value="Iniciar Sesion" class="boton boton-verde">
-        </form>
-    </main>
-</body>
-</html>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST" class="formulario" action="/Auth/login">
+                <fieldset>
+                    <legend class="centrar">Email y Password</legend>
+                    <div class="form-group row">
+                        <div class="col-md-12 grupos">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" placeholder="Tú Email">
+                        </div>
+                        <div class="col-md-12 grupos">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" id="password" placeholder="Tú Password">
+                        </div>
+                    </div>
+                </fieldset>
+                <input type="submit" value="Iniciar Sesion" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+</main>
