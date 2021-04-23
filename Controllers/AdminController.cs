@@ -39,6 +39,22 @@ namespace webappPrueba.Controllers
             }
         }
 
+        public ActionResult Consumidores()
+        {
+            if(Session["user"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToRoute(new
+                {
+                    controller = "Home",
+                    action = "Index",
+                });
+            }
+        }
+
         public ActionResult Crear()
         {
             if (Session["user"] != null)

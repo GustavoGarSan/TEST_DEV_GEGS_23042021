@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Consumidores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-12"><h2>Consumidores</h2></div>
+        <div class="col-md-12"><a class="btn btn-success" href="/Admin">Volver</a></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="tabla" class="display nowrap" style="width:100%">
+                <thead id="cabecera">
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>puesto</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
